@@ -12,8 +12,13 @@ int main()
     unsigned short int n;
     std::cin >> n;
 
-    // Creates an array with size n with the integers
+    // Creates an array with size n with the integers (1 <= arr[iii] <= 1e9)
     unsigned int *arr = (unsigned int*) malloc(sizeof(unsigned int) * n);
+    if (arr == nullptr)
+    {
+        std::cout << "FAILED TO ALOCATE MEMORY!\n";
+        exit(-1);
+    }
 
     // Sets a minimum and maximum value for the elements of the array
     unsigned int min { 1 };
@@ -32,8 +37,25 @@ int main()
 
     while (current <= max)
     {
-        
+        for (unsigned short int iii = 0; iii < n; ++iii)
+        {
+            if (arr[iii] == current)
+            {
+                if (current % 2 == 0) 
+                {
+                    arr[iii]--;
+                }
+                else
+                {
+                    arr[iii]++;
+                }
+            }
+        }
+        current++;
     }
+
+    for (unsigned short int iii = 0; iii < n; ++iii) std::cout << arr[iii] << " ";
+    std::cout << "\n";
 
     free(arr);
     arr = nullptr;
