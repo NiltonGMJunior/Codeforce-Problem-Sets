@@ -21,6 +21,7 @@ int main()
     // Start and end points of a segment
     unsigned short int l, r;
 
+    // Sets true to all points inside any of the segments
     for (unsigned short int iii = 0; iii < n; ++iii)
     {
         std::cin >> l >> r;
@@ -29,24 +30,20 @@ int main()
     }
 
     // Count of points outside of the segments ranges
-    unsigned short int count_out_points = 0;
+    unsigned short int count_out_points = m;
 
+    // Counts points outside of the segments
     for (unsigned short int iii = 1; iii <= m; ++iii)
-        if (!points_map[iii]) 
-            count_out_points--; 
+        if (points_map[iii])
+            count_out_points--;
 
     std::cout << count_out_points << '\n';
-    if (count_out_points == 0)
-        std::cout << '\n';
-    else
-    {
-        for (unsigned short int iii = 1, jjj = count_out_points; jjj > 0; ++iii)
-            if (!points_map[iii])
-            {
-                jjj--;
-                std::cout << iii << ' ';
-            }
-    }
-
+    for (unsigned short int iii = 1, jjj = count_out_points; jjj > 0; ++iii)
+        if (!points_map[iii])
+        {
+            jjj--;
+            std::cout << iii << ' ';
+        }
+    std::cout << '\n';
     return 0;
 }
