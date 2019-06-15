@@ -42,6 +42,5 @@ int main()
 		std::cout << (is_telephone(n, s) ? "YES" : "NO") << '\n';
 	}
 
-
 	return 0;
 }
